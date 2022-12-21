@@ -1,0 +1,19 @@
+{
+    "name": "ex-nodejs",
+    "version": "0.0.0-beta.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=production node ./bin/www",
+        "dev": "cross-env NODE_ENV=development nodemon ./bin/www"
+    },
+    "keywords": [],
+    "author": "WinterSwords",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    },
+    "dependencies": {
+        "cross-env": "^7.0.3"
+    }
+}
