@@ -1,25 +1,11 @@
 const express = require('express');
 const {resolve}=require('path');
 const app = express();
+const appRoutes = require('./routing/router');
+const apiUsers = require('./routing/apiUsers');
 
-app.use(express.static(resolve('public')));
-/**
- * app
- */
-// --> /services == /home ==> false
-// --> /services == /services ==> true
-
-app.get('/home', (req,res)=>{
-  res.sendFile(resolve('public','index.html'));
-})
-app.get('/contact', (req,res)=>{
-  res.sendFile(resolve('public','contact.html'));
-})
-app.get('/service', (req,res)=>{
-  res.sendFile(resolve('public','service.html'));
-})
-app.get('*', (req,res)=>{
-  res.sendFile(resolve('public','404.html'));
-})
+app.use(express.static(resolve('public'),{index : false}));
+app.use(apiUsers);
+app.use(appRoutes);
 
 module.exports = app;

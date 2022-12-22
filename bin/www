@@ -6,7 +6,7 @@ const {port, ssl} = require(`../environment/env.${process.env.NODE_ENV}.js`);
 
 http.createServer((req, res)=>{
     const redirec = `https://${req.headers.host.split(':')[0]}:${port.https}${req.url}`;
-    res.end(fs.readFileSync('./redirection.html'));
+    res.end(fs.readFileSync('./redirection.html'));//res.end (arrête la requête)
     //setTimeout (5000);
     res.writeHead(301,{Location: redirec});
 }).listen(port.http);
