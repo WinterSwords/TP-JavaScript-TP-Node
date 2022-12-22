@@ -1,13 +1,13 @@
 const http = require('http');
 const https = require('https');
 const app = require('../app');
+const fs =require('fs');
 const {port, ssl} = require(`../environment/env.${process.env.NODE_ENV}.js`);
 
 http.createServer((req, res)=>{
     const redirec = `https://${req.headers.host.split(':')[0]}:${port.https}${req.url}`;
-    const redirecTemp = `https://localhost:7979/redirection.html`;
-    //res.writeHead(301,{Location: redirecTemp});
-    //res.writeHead(301,{Location: redirec});
-    res.end('<div w3-include-html="../redirection.html"></div>');
+    res.end(fs.readFileSync('./redirection.html'));
+    //setTimeout (5000);
+    res.writeHead(301,{Location: redirec});
 }).listen(port.http);
 https.createServer(ssl, app).listen(port.https);
