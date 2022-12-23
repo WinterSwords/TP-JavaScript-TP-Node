@@ -1,20 +1,18 @@
-const {resolve}=require('path');
+const { resolve } = require('path');
 
-function getIndex(req,res){
-    res.sendFile(resolve('public','index.html'));
+exports.homePage = (req, res) => {
+    res.render('pages/home.pug');//render automatique dans views par default
 }
-function getContact(req,res){
-    res.sendFile(resolve('public','contact.html'));
+exports.servicesPage = (req, res) => {
+    res.render('pages/services.pug');
 }
-function getService(req,res){
-    res.sendFile(resolve('public','service.html'));
+exports.contactPage = (req, res) => {
+    res.render('pages/contact.pug');
 }
-function get404(req,res){
-    res.sendFile(resolve('public', 'page404.html'));
+exports.usersPage = (req, res) => {
+    const {users}=require('../database/data.json')
+    res.render('pages/users.pug',{users});
 }
-module.exports = {
-    getIndex,
-    getContact,
-    getService,
-    get404
-};
+exports.page404Page = (req, res) => {
+    res.render('pages/page404.pug');
+}

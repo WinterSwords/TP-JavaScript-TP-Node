@@ -1,0 +1,14 @@
+extends ../layout
+
+block contenu
+    h1 Liste des utilisateurs
+    table
+        tr 
+            th Prenom
+            th Email
+            th Age
+        each user in users 
+            tr(style=('color:' + user.color))
+                td= user.pseudo 
+                td= user.email 
+                td= user.age 

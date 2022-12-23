@@ -9,8 +9,7 @@
         "zipcode": "23233",
         "city": "Paris"
       }
-    },
-    {
+    },{
       "_id": "2",
       "pseudo": "jaco",
       "email": "jaco@mail.fr",
